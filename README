@@ -1,0 +1,51 @@
+📦 nt-telegram-bot-lib
+
+Pythonda yozilgan sodda va tushunarli Telegram bot kutubxonasi.
+Bu kutubxona orqali Updater, MessageHandler va boshqa oson interfeyslar bilan tezda bot yaratishingiz mumkin.
+
+✨ Xususiyatlari
+
+Oddiy API — murakkab requests chaqiruvlari o‘rniga tayyor sinflar.
+
+Dispatcher & Handlers — kelayotgan xabarlarni boshqarish tizimi.
+
+Message obyektlari — matn, rasm, stikerni olish va qaytarish.
+
+Polling — botni doimiy ishlatish uchun tayyor mexanizm.
+
+📥 O‘rnatish
+git clone https://github.com/username/nt-telegram-bot-lib.git
+cd nt-telegram-bot-lib
+
+🚀 Foydalanish
+from telegram.updater import Updater
+from telegram.handlers import MessageHandler
+from telegram.types import Update
+from config import token
+
+def handle_message(update: Update):
+    message = update.message
+
+    if message.text:
+        if message.text == '/start':
+            message.reply_text(token, 'Assalomu aleykum. ECHO BOT')
+        else:
+            message.reply_text(token, message.text)
+
+updater = Updater(token)
+dispatcher = updater.dispatcher
+
+dispatcher.add_handlers(MessageHandler(handle_message))
+
+updater.start_polling()
+
+📂 Tuzilishi
+telegram/
+ ├── updater.py
+ ├── handlers.py
+ ├── types.py
+ └── __init__.py
+
+📜 Litsenziya
+
+MIT License — erkin foydalanish mumkin.
